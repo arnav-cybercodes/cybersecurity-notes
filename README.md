@@ -72,6 +72,7 @@ Learned essential Linux commands:
 ## 🏆 Achievements
 
 - 🐧 TryHackMe Badge: cat linux.txt  
-  🔗 https://tryhackme.com/arnavanand.dev/badges/terminaled?
+  🔗 [View Badge](https://tryhackme.com/arnavanand.dev/badges/terminaled)
+  
 
  
