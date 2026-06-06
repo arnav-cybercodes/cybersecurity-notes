@@ -1,14 +1,28 @@
 # Cybersecurity Learning Journey
 
-Hi, I'm Arnav.
-
 Mechanical Engineering student transitioning into Cybersecurity.
 
-Currently learning:
+## Skills
+- Linux
+- Networking
+- Windows Fundamentals
+- Wireshark
+- tcpdump
+- Nmap
+
+## Learning Progress
+- [x] Linux
+- [x] Networking
+- [x] Windows Fundamentals
+- [ ] Command Line
+- [ ] Cryptography
+
+## Notes
 - Linux
 - Networking
 - Windows Fundamentals
 - Command Line
-- Cryptography (upcoming)
+- Cryptography
 
-Hands-on practice through TryHackMe labs and personal projects.
+## TryHackMe
+Top 25% Global Ranking
