@@ -1,4 +1,23 @@
 # Linux Fundamentals Notes
+## Contents
+
+- Introduction to Linux
+- Linux Terminal Basics
+- Navigating the File System
+- Finding Files and Data
+- Linux Operators
+- SSH
+- Command Arguments and Switches
+- File Management
+- Linux Permissions
+- Important Linux Directories
+- Text Editors
+- File Transfer Techniques
+- Process Management
+- Service Management
+- Cron Jobs
+- Package Management
+- Linux Logs
 
 ## Introduction to Linux
 
