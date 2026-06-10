@@ -1683,28 +1683,195 @@ Always create backups before modifying the registry.
 
 ---
 
-# Cybersecurity Relevance
+## WINDOWS UPDATE
+-----------------
+Windows Update is a Microsoft service that provides:
+• Security updates
+• Feature enhancements
+• Bug fixes and patches
+• Microsoft Defender updates
 
-The tools covered in this room are frequently used by:
+Patch Tuesday:
+• Updates are usually released on the 2nd Tuesday of every month.
+• Critical updates may be released earlier if needed.
 
-* SOC Analysts
-* Incident Responders
-* System Administrators
-* Threat Hunters
-* Malware Analysts
+Important:
+• Updates help keep systems secure.
+• Many updates require a restart.
+• Windows 10/11 updates cannot be postponed forever.
 
-Important tools include:
+Command:
+control /name Microsoft.WindowsUpdate
 
-* MSConfig
-* Event Viewer
-* Task Scheduler
-* Resource Monitor
-* System Information
-* Registry Editor
-* Device Manager
-* Performance Monitor
-* Command Prompt
 
-Understanding these tools is essential for Windows administration and cybersecurity investigations.
+## WINDOWS SECURITY
+-------------------
+Windows Security is the central dashboard for managing Windows protection.
+
+Protection Areas:
+• Virus & Threat Protection
+• Firewall & Network Protection
+• App & Browser Control
+• Device Security
+
+Status Indicators:
+• Green = Protected
+• Yellow = Recommendation available
+• Red = Immediate action required
+
+
+## VIRUS & THREAT PROTECTION
+----------------------------
+Current Threats:
+• Shows threat status.
+• Displays scan history.
+• Shows detected threats.
+
+Scan Types:
+• Quick Scan – Checks common malware locations.
+• Full Scan – Scans entire system.
+• Custom Scan – Scans selected files/folders.
+
+Threat History:
+• Last Scan
+• Quarantined Threats
+• Allowed Threats
+
+Virus & Threat Protection Settings:
+• Real-Time Protection – Continuously scans for threats.
+• Cloud-Delivered Protection – Uses Microsoft cloud intelligence.
+• Automatic Sample Submission – Sends suspicious files to Microsoft.
+• Controlled Folder Access – Protects files from ransomware.
+• Exclusions – Files/folders ignored by antivirus scans.
+• Notifications – Security alerts from Defender.
+
+Warning:
+Only allow threats or create exclusions if you are absolutely sure they are safe.
+
+
+## FIREWALL & NETWORK PROTECTION
+--------------------------------
+Firewall:
+A security feature that controls incoming and outgoing network traffic.
+
+Firewall Profiles:
+
+Domain Profile
+• Used on domain networks.
+
+Private Profile
+• Used on trusted home/work networks.
+
+Public Profile
+• Used on public networks such as airports and cafés.
+
+Functions:
+• Turn Firewall On/Off
+• Block Incoming Connections
+• Allow Apps Through Firewall
+• Create Firewall Rules
+• Monitor Network Traffic
+
+Command:
+wf.msc
+
+Best Practice:
+Keep Windows Defender Firewall enabled.
+
+
+## APP & BROWSER CONTROL
+------------------------
+Microsoft Defender SmartScreen:
+Protects against:
+• Malicious websites
+• Phishing attacks
+• Dangerous downloads
+• Unrecognized applications
+
+Modes:
+• Block
+• Warn
+• Off
+
+Exploit Protection:
+Built-in security mitigations including:
+• Control Flow Guard (CFG)
+• Data Execution Prevention (DEP)
+• Address Space Layout Randomization (ASLR)
+
+
+## DEVICE SECURITY
+------------------
+Provides hardware-based protection.
+
+Core Isolation:
+Uses virtualization-based security.
+
+Memory Integrity:
+• Prevents malicious code injection into protected processes.
+
+Security Processor:
+• Trusted Platform Module (TPM)
+
+TPM Benefits:
+• Stores cryptographic keys securely.
+• Supports BitLocker encryption.
+• Protects sensitive data.
+• Detects tampering attempts.
+
+
+## BITLOCKER
+------------
+BitLocker is Microsoft's full-disk encryption feature.
+
+Purpose:
+• Protects data if a device is lost or stolen.
+• Prevents unauthorized access to drives.
+• Helps detect system tampering.
+
+Best Protection:
+• Use with TPM 1.2 or later.
+
+Advantages:
+• Full drive encryption
+• Data protection
+• Improved system security
+
+
+## VOLUME SHADOW COPY SERVICE (VSS)
+-----------------------------------
+VSS creates shadow copies (snapshots) of files and drives.
+
+Uses:
+• Create Restore Points
+• System Restore
+• Restore Previous Versions
+• Backup Operations
+
+Stored In:
+• System Volume Information folder
+
+Security Note:
+Ransomware often deletes shadow copies to prevent recovery.
+
+VSS Functions:
+• Create restore points
+• Perform system restore
+• Configure restore settings
+• Delete restore points
+
+
+QUICK REVISION
+--------------
+Patch Tuesday = 2nd Tuesday of every month
+TPM = Trusted Platform Module
+BitLocker = Full disk encryption
+SmartScreen = Protection against malicious apps/websites
+Firewall = Controls network traffic
+Real-Time Protection = Continuous malware monitoring
+VSS = Creates snapshots for backup and recovery
+Memory Integrity = Prevents code injection attacks
+wf.msc = Opens Windows Defender Firewall
+control /name Microsoft.WindowsUpdate = Opens Windows Update
 
 operations.
