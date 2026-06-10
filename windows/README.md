@@ -871,21 +871,840 @@ Understanding Task Manager is a fundamental Windows and cybersecurity skill.
 
 ---
 
-# Windows Fundamentals Summary
+# System Configuration (MSConfig) & Advanced System Settings
 
-Key topics learned:
+## System Configuration (MSConfig)
 
-* Windows Editions
-* Desktop GUI
-* Start Menu
-* Taskbar
-* NTFS File System
-* System32
-* User Accounts
+MSConfig is an advanced troubleshooting utility primarily used to diagnose startup and boot-related issues.
+
+Launch:
+
+```text
+msconfig
+```
+
+Administrator privileges are required to access this utility.
+
+---
+
+## MSConfig Tabs
+
+### 1. General Tab
+
+Controls what Windows loads during startup.
+
+Startup options:
+
+* Normal Startup
+* Diagnostic Startup
+* Selective Startup
+
+#### Normal Startup
+
+Loads all device drivers and services.
+
+#### Diagnostic Startup
+
+Loads only basic devices and services.
+
+#### Selective Startup
+
+Allows custom control over startup services and applications.
+
+---
+
+### 2. Boot Tab
+
+Used to configure operating system boot options.
+
+Common options:
+
+* Safe Boot
+* No GUI Boot
+* Boot Log
+* Base Video
+* OS Boot Information
+
+Useful for troubleshooting startup issues.
+
+---
+
+### 3. Services Tab
+
+Displays all Windows services regardless of whether they are:
+
+* Running
+* Stopped
+
+A service is a background process that performs specific functions for the operating system or applications.
+
+---
+
+### 4. Startup Tab
+
+Modern Windows versions redirect startup management to Task Manager.
+
+MSConfig itself is no longer used to manage startup programs.
+
+Startup items can be viewed through:
+
+```text
+Task Manager → Startup
+```
+
+or
+
+```text
+shell:startup
+```
+
+The Startup folder contains programs configured to launch automatically when a user signs in.
+
+---
+
+### 5. Tools Tab
+
+Provides shortcuts to numerous Windows administrative utilities.
+
+Examples:
+
+* About Windows
+* Change UAC Settings
+* Computer Management
+* System Information
+* Event Viewer
+* Programs and Features
+* Internet Options
+
+Each tool includes a description and launch command.
+
+---
+
+# Advanced System Settings
+
+Open:
+
+```text
+View advanced system settings
+```
+
+This opens the System Properties window.
+
+---
+
+## Performance Settings
+
+Path:
+
+```text
+System Properties → Advanced → Performance → Settings
+```
+
+Used to configure:
+
+* Visual Effects
+* Processor Scheduling
+* Memory Usage
+* Virtual Memory
+
+---
+
+## Virtual Memory (Page File)
+
+Windows uses a page file when physical RAM becomes full.
+
+Purpose:
+
+* Prevent application crashes
+* Improve stability
+* Extend available memory
+
+Information available:
+
+* Drive location
+* Initial size
+* Maximum size
+* Automatic management status
+
+---
+
+## Startup and Recovery
+
+Path:
+
+```text
+Advanced → Startup and Recovery → Settings
+```
+
+Controls:
+
+* Startup behavior
+* Recovery options
+* Crash dump generation
+
+---
+
+## Crash Dumps
+
+A crash dump is a file created when Windows encounters a critical error (Blue Screen).
+
+Supported dump types:
+
+* Automatic Memory Dump
+* Kernel Memory Dump
+* Small Memory Dump (256 KB)
+* Complete Memory Dump
+* None
+
+Crash dumps are useful for forensic analysis and troubleshooting.
+
+---
+
+# Change UAC Settings
+
+## User Account Control (UAC)
+
+UAC helps prevent unauthorized changes to Windows.
+
+Access:
+
+```text
+Change UAC Settings
+```
+
+---
+
+## UAC Security Levels
+
+### Always Notify
+
+Highest security level.
+
+Windows notifies whenever:
+
+* Applications make changes
+* Users make system changes
+
+Desktop is dimmed using Secure Desktop.
+
+---
+
+### Notify Me Only When Apps Try To Make Changes (Default)
+
+* Alerts for application changes
+* Does not alert for Windows settings modifications
+
+Default configuration.
+
+---
+
+### Notify Without Dimming
+
+Same as default but Secure Desktop is disabled.
+
+---
+
+### Never Notify
+
+Lowest security level.
+
+No notifications are displayed.
+
+Not recommended.
+
+---
+
+# Computer Management
+
+Launch:
+
+```text
+compmgmt.msc
+```
+
+Computer Management is divided into three major sections:
+
+1. System Tools
+2. Storage
+3. Services and Applications
+
+---
+
+# System Tools
+
+## Task Scheduler
+
+Task Scheduler automates tasks on Windows.
+
+Capabilities:
+
+* Run applications
+* Execute scripts
+* Trigger actions on schedules
+* Run tasks at logon/logoff
+
+### Common Triggers
+
+* Daily
+* Weekly
+* Monthly
+* One-Time Events
+* System Startup
+* User Login
+
+Task Scheduler Library stores all scheduled tasks.
+
+---
+
+## Event Viewer
+
+Event Viewer records system activity and logs.
+
+Used for:
+
+* Troubleshooting
+* Security Monitoring
+* Incident Investigation
+* System Diagnostics
+
+Launch:
+
+```text
+eventvwr.msc
+```
+
+---
+
+### Event Types
+
+#### Error
+
+Indicates a significant problem.
+
+Example:
+
+* Service startup failure
+
+#### Warning
+
+Potential future issue.
+
+Example:
+
+* Low disk space
+
+#### Information
+
+Successful operation notification.
+
+#### Success Audit
+
+Successful security-related action.
+
+Example:
+
+* Successful login
+
+#### Failure Audit
+
+Failed security-related action.
+
+Example:
+
+* Failed login attempt
+
+---
+
+### Standard Windows Logs
+
+#### Application
+
+Events generated by applications.
+
+#### Security
+
+Authentication and security events.
+
+#### System
+
+Events generated by Windows components.
+
+#### Custom Logs
+
+Application-specific logs.
+
+---
+
+## Shared Folders
+
+Displays shared resources available on the system.
+
+Includes:
+
+* Shares
+* Sessions
+* Open Files
+
+Useful for identifying network-accessible resources.
+
+---
+
+## Local Users and Groups
+
+Provides management of:
+
+* Local users
+* Local groups
+* Permissions
+
+Launch:
+
+```text
+lusrmgr.msc
+```
+
+---
+
+## Performance Monitor (PerfMon)
+
+Launch:
+
+```text
+perfmon
+```
+
+Used to monitor:
+
+* CPU usage
+* Memory usage
+* Disk performance
+* Network activity
+
+Can collect real-time and historical performance data.
+
+---
+
+## Device Manager
+
+Launch:
+
+```text
+devmgmt.msc
+```
+
+Used to:
+
+* View hardware devices
+* Update drivers
+* Disable devices
+* Troubleshoot hardware
+
+Examples:
+
+* Network Adapters
+* Disk Drives
+* Keyboards
+* Monitors
+* Processors
+
+---
+
+# Storage
+
+## Disk Management
+
+Provides advanced disk administration.
+
+Functions:
+
+* Create partitions
+* Extend partitions
+* Shrink partitions
+* Format volumes
+* Assign drive letters
+
+Useful for managing storage devices.
+
+---
+
+# Services and Applications
+
+## Services
+
+Displays all Windows services.
+
+Information shown:
+
+* Service Name
+* Display Name
+* Status
+* Startup Type
+* Logon Account
+
+---
+
+### Startup Types
+
+#### Automatic
+
+Starts when Windows boots.
+
+#### Manual
+
+Starts only when required.
+
+#### Disabled
+
+Cannot start.
+
+---
+
+## Windows Management Instrumentation (WMI)
+
+WMI provides a standardized method for accessing management information about Windows systems.
+
+Widely used by:
+
+* Administrators
+* Monitoring Tools
+* Security Products
+* PowerShell Scripts
+
+---
+
+# System Information
+
+Launch:
+
+```text
+msinfo32
+```
+
+Provides detailed information about:
+
+* Hardware
+* Components
+* Software Environment
+
+---
+
+## System Summary
+
+Displays:
+
+* OS Name
+* Version
+* System Model
+* Processor
+* BIOS Information
+
+---
+
+## Hardware Resources
+
+Contains information about:
+
+* IRQs
+* DMA
+* Memory
+* I/O Resources
+
+Primarily useful for advanced troubleshooting.
+
+---
+
+## Components
+
+Provides detailed information about hardware.
+
+Examples:
+
+* Display
+* Sound Devices
+* Storage
+* USB
+* Network Adapters
+
+---
+
+## Software Environment
+
+Provides information about:
+
+* Drivers
+* Services
+* Running Tasks
+* Startup Programs
+* Environment Variables
+* Network Connections
+
+---
+
+## Environment Variables
+
+Environment variables store system-related information.
+
+Examples:
+
+```text
+%windir%
+%temp%
+%systemroot%
+```
+
+Common uses:
+
+* Locating files
+* Application configuration
+* System automation
+
+---
+
+# Resource Monitor
+
+Launch:
+
+```text
+resmon
+```
+
+Resource Monitor provides detailed performance monitoring.
+
+Unlike Task Manager, it offers deeper visibility into system resource usage.
+
+---
+
+## Resource Monitor Categories
+
+### CPU
+
+Displays:
+
+* Running Processes
+* Services
+* Handles
+* Modules
+
+---
+
+### Memory
+
+Displays:
+
+* Physical Memory Usage
+* Available Memory
+* Standby Memory
+* Memory Allocation
+
+---
+
+### Disk
+
+Displays:
+
+* Disk Activity
+* Read Operations
+* Write Operations
+* Disk Queue Length
+
+---
+
+### Network
+
+Displays:
+
+* Network Activity
+* TCP Connections
+* Listening Ports
+* Remote Connections
+
+---
+
+## Benefits
+
+Resource Monitor helps:
+
+* Identify bottlenecks
+* Diagnose slow systems
+* Analyze network activity
+* Investigate suspicious processes
+
+---
+
+# Command Prompt
+
+Launch:
+
+```text
+cmd
+```
+
+Command Prompt is a command-line interface used to interact directly with Windows.
+
+---
+
+## hostname
+
+Displays the computer name.
+
+```cmd
+hostname
+```
+
+---
+
+## whoami
+
+Displays the currently logged-in user.
+
+```cmd
+whoami
+```
+
+---
+
+## ipconfig
+
+Displays network configuration.
+
+```cmd
+ipconfig
+```
+
+Information shown:
+
+* IP Address
+* Subnet Mask
+* Default Gateway
+* DNS Information
+
+---
+
+## Command Help
+
+Most commands support:
+
+```cmd
+command /?
+```
+
+Example:
+
+```cmd
+ipconfig /?
+```
+
+Displays available options and syntax.
+
+---
+
+## cls
+
+Clears the command prompt screen.
+
+```cmd
+cls
+```
+
+---
+
+## netstat
+
+Displays:
+
+* Active TCP Connections
+* Listening Ports
+* Network Statistics
+
+```cmd
+netstat
+```
+
+Useful for network troubleshooting and threat hunting.
+
+---
+
+# Registry Editor
+
+Launch:
+
+```text
+regedit
+```
+
+The Windows Registry is a hierarchical database that stores operating system and application configuration information.
+
+---
+
+## Registry Stores Information About
+
 * User Profiles
-* User Account Control (UAC)
-* Settings
-* Control Panel
-* Task Manager
+* Installed Applications
+* File Associations
+* Hardware Configuration
+* Network Settings
+* System Settings
 
-These concepts form the foundation for Windows administration, digital forensics, SOC analysis, incident response, and cybersecurity operations.
+---
+
+## Important Registry Hives
+
+### HKEY_CLASSES_ROOT (HKCR)
+
+File associations and object linking information.
+
+### HKEY_CURRENT_USER (HKCU)
+
+Current user's settings.
+
+### HKEY_LOCAL_MACHINE (HKLM)
+
+System-wide configuration.
+
+### HKEY_USERS (HKU)
+
+All user profiles.
+
+### HKEY_CURRENT_CONFIG (HKCC)
+
+Current hardware profile.
+
+---
+
+## Warning
+
+Improper registry modifications can:
+
+* Break applications
+* Cause boot issues
+* Corrupt Windows
+
+Always create backups before modifying the registry.
+
+---
+
+# Cybersecurity Relevance
+
+The tools covered in this room are frequently used by:
+
+* SOC Analysts
+* Incident Responders
+* System Administrators
+* Threat Hunters
+* Malware Analysts
+
+Important tools include:
+
+* MSConfig
+* Event Viewer
+* Task Scheduler
+* Resource Monitor
+* System Information
+* Registry Editor
+* Device Manager
+* Performance Monitor
+* Command Prompt
+
+Understanding these tools is essential for Windows administration and cybersecurity investigations.
+
+operations.
