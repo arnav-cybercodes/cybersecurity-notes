@@ -989,7 +989,806 @@ Attackers may target cookies using:
 
 ✔ SameSite → Helps Prevent CSRF
 ````
+````
+## SQL (Structured Query Language)
 
+### What is SQL?
+
+SQL (Structured Query Language) is the standard language used to interact with **Relational Database Management Systems (RDBMS)** such as MySQL, PostgreSQL, MariaDB, Oracle Database, and Microsoft SQL Server.
+
+SQL allows us to:
+
+* Create databases and tables
+* Insert data
+* Retrieve data
+* Update records
+* Delete records
+* Filter and sort data
+* Perform calculations and aggregation
+
+---
+
+# Databases
+
+A **database** is an organized collection of information stored electronically.
+
+Example:
+
+Instead of storing user information in text files:
+
+```
+Arnav
+123@gmail.com
+Password123
+```
+
+A database stores it in a structured format.
+
+Example Table:
+
+| id | name  | email                                   |
+| -- | ----- | --------------------------------------- |
+| 1  | Arnav | [123@gmail.com](mailto:123@gmail.com)   |
+| 2  | John  | [john@gmail.com](mailto:john@gmail.com) |
+
+---
+
+# Types of Databases
+
+## Relational Databases (SQL)
+
+* Store data in tables
+* Data organized into rows and columns
+* Relationships exist between tables
+* Uses SQL
+
+Examples:
+
+* MySQL
+* PostgreSQL
+* MariaDB
+* Oracle
+* SQL Server
+
+---
+
+## Non-Relational Databases (NoSQL)
+
+Store data as:
+
+* JSON
+* Documents
+* Key-Value
+* Graph
+* Collections
+
+Examples:
+
+* MongoDB
+* Cassandra
+* Redis
+
+---
+
+# Tables, Rows and Columns
+
+### Table
+
+A collection of related data.
+
+Example:
+
+```
+Books
+```
+
+---
+
+### Row
+
+One complete record.
+
+```
+1 | Android Security | 2021
+```
+
+---
+
+### Column
+
+A single attribute.
+
+```
+Name
+Price
+Category
+```
+
+---
+
+# Primary Key
+
+A Primary Key uniquely identifies every row.
+
+Example
+
+```
+book_id
+```
+
+Properties
+
+* Unique
+* Cannot be NULL
+* Only one Primary Key per table
+
+Example
+
+| book_id | name |
+| ------- | ---- |
+| 1       | Nmap |
+| 2       | Burp |
+
+---
+
+# Foreign Key
+
+A Foreign Key links two tables.
+
+Books Table
+
+| book_id | author_id |
+| ------- | --------- |
+| 1       | 5         |
+
+Authors Table
+
+| author_id | name  |
+| --------- | ----- |
+| 5         | Craig |
+
+Foreign Keys create relationships between tables.
+
+---
+
+# SQL CRUD Operations
+
+CRUD =
+
+* Create
+* Read
+* Update
+* Delete
+
+---
+
+## CREATE
+
+Create Database
+
+```sql
+CREATE DATABASE tools_db;
+```
+
+Create Table
+
+```sql
+CREATE TABLE hacking_tools(
+id INT,
+name VARCHAR(50)
+);
+```
+
+---
+
+## READ (SELECT)
+
+Select everything
+
+```sql
+SELECT * FROM hacking_tools;
+```
+
+Specific columns
+
+```sql
+SELECT name, category FROM hacking_tools;
+```
+
+---
+
+## UPDATE
+
+```sql
+UPDATE hacking_tools
+SET category='Network'
+WHERE id=2;
+```
+
+---
+
+## DELETE
+
+```sql
+DELETE FROM hacking_tools
+WHERE id=5;
+```
+
+---
+
+# Database Commands
+
+Create Database
+
+```sql
+CREATE DATABASE tools_db;
+```
+
+Show Databases
+
+```sql
+SHOW DATABASES;
+```
+
+Use Database
+
+```sql
+USE tools_db;
+```
+
+Show Tables
+
+```sql
+SHOW TABLES;
+```
+
+Describe Table
+
+```sql
+DESCRIBE hacking_tools;
+```
+
+or
+
+```sql
+DESC hacking_tools;
+```
+
+Drop Table
+
+```sql
+DROP TABLE hacking_tools;
+```
+
+Drop Database
+
+```sql
+DROP DATABASE tools_db;
+```
+
+---
+
+# Table Modification
+
+Add Column
+
+```sql
+ALTER TABLE hacking_tools
+ADD version VARCHAR(20);
+```
+
+---
+
+# SQL Clauses
+
+## WHERE
+
+Filters rows.
+
+```sql
+SELECT *
+FROM books
+WHERE id=3;
+```
+
+---
+
+## DISTINCT
+
+Returns only unique values.
+
+```sql
+SELECT DISTINCT category
+FROM hacking_tools;
+```
+
+---
+
+## GROUP BY
+
+Groups rows together.
+
+```sql
+SELECT category,
+COUNT(*)
+FROM hacking_tools
+GROUP BY category;
+```
+
+---
+
+## ORDER BY
+
+Ascending
+
+```sql
+ORDER BY amount ASC;
+```
+
+Descending
+
+```sql
+ORDER BY amount DESC;
+```
+
+---
+
+## HAVING
+
+Filters grouped results.
+
+```sql
+SELECT category,
+COUNT(*)
+FROM hacking_tools
+GROUP BY category
+HAVING COUNT(*)>2;
+```
+
+Difference:
+
+WHERE → before grouping
+
+HAVING → after grouping
+
+---
+
+# SQL Operators
+
+## LIKE
+
+Pattern Matching
+
+```
+% = any number of characters
+
+_ = one character
+```
+
+Examples
+
+```sql
+WHERE name LIKE "%Hack%"
+```
+
+```sql
+WHERE name LIKE "A%"
+```
+
+---
+
+## AND
+
+Both conditions must be TRUE.
+
+```sql
+WHERE category="Network"
+AND amount>200;
+```
+
+---
+
+## OR
+
+Either condition can be TRUE.
+
+```sql
+WHERE category="Network"
+OR category="Web";
+```
+
+---
+
+## NOT
+
+Negates a condition.
+
+```sql
+WHERE NOT category="Web";
+```
+
+---
+
+## BETWEEN
+
+Checks a range.
+
+```sql
+WHERE amount BETWEEN 100 AND 500;
+```
+
+---
+
+## Comparison Operators
+
+Equal
+
+```sql
+=
+```
+
+Not Equal
+
+```sql
+!=
+```
+
+Greater Than
+
+```sql
+>
+```
+
+Less Than
+
+```sql
+<
+```
+
+Greater Than or Equal
+
+```sql
+>=
+```
+
+Less Than or Equal
+
+```sql
+<=
+```
+
+---
+
+# SQL Functions
+
+## CONCAT()
+
+Joins strings.
+
+```sql
+SELECT CONCAT(name," - ",category)
+FROM hacking_tools;
+```
+
+---
+
+## GROUP_CONCAT()
+
+Combines values from multiple rows.
+
+```sql
+SELECT GROUP_CONCAT(name SEPARATOR ", ")
+FROM hacking_tools;
+```
+
+---
+
+## SUBSTRING()
+
+Extract part of a string.
+
+```sql
+SELECT SUBSTRING(name,1,4)
+FROM hacking_tools;
+```
+
+---
+
+## LENGTH()
+
+Returns string length.
+
+```sql
+SELECT LENGTH(name)
+FROM hacking_tools;
+```
+
+---
+
+## COUNT()
+
+Counts rows.
+
+```sql
+SELECT COUNT(*)
+FROM hacking_tools;
+```
+
+---
+
+## SUM()
+
+Adds values.
+
+```sql
+SELECT SUM(amount)
+FROM hacking_tools;
+```
+
+---
+
+## MAX()
+
+Maximum value.
+
+```sql
+SELECT MAX(amount)
+FROM hacking_tools;
+```
+
+---
+
+## MIN()
+
+Minimum value.
+
+```sql
+SELECT MIN(amount)
+FROM hacking_tools;
+```
+
+---
+
+# Useful SQL Tips
+
+Largest value with its name
+
+```sql
+SELECT name, amount
+FROM hacking_tools
+ORDER BY amount DESC
+LIMIT 1;
+```
+
+Amount not ending in 0
+
+```sql
+WHERE amount % 10 != 0
+```
+
+Multiple names in one row
+
+```sql
+GROUP_CONCAT(name SEPARATOR " & ")
+```
+
+---
+
+# Burp Suite Basics
+
+## What is Burp Suite?
+
+Burp Suite is a Java-based web application security testing framework used by penetration testers to intercept, inspect, modify, and analyze HTTP/HTTPS traffic between a browser and a web server.
+
+It acts as a proxy between the client and the target application.
+
+```
+Browser
+    │
+    ▼
+Burp Proxy
+    │
+    ▼
+Target Website
+```
+
+---
+
+# Burp Suite Editions
+
+## Community Edition
+
+* Free
+* Manual testing
+* Suitable for learning
+* Limited Intruder speed
+
+---
+
+## Professional Edition
+
+Includes:
+
+* Automated Vulnerability Scanner
+* Fast Intruder
+* Burp Collaborator
+* API Integration
+* Advanced Reporting
+* Unlimited Extensions
+
+---
+
+## Enterprise Edition
+
+Designed for organizations.
+
+Features:
+
+* Continuous automated scanning
+* Dashboard
+* Scheduled scans
+* Centralized vulnerability management
+
+---
+
+# Core Burp Suite Tools
+
+## Proxy
+
+* Intercepts HTTP/HTTPS traffic
+* Modify requests
+* Modify responses
+* Forward or drop requests
+
+Most frequently used Burp feature.
+
+---
+
+## Repeater
+
+Used to resend the same request repeatedly after modifying parameters.
+
+Useful for:
+
+* SQL Injection
+* XSS
+* Authentication Testing
+* API Testing
+
+---
+
+## Intruder
+
+Automates requests using payload lists.
+
+Used for:
+
+* Brute Force
+* Fuzzing
+* Parameter Discovery
+
+---
+
+## Decoder
+
+Encodes and decodes data.
+
+Supports:
+
+* Base64
+* URL Encoding
+* HTML
+* Hex
+* Binary
+
+---
+
+## Comparer
+
+Compares two requests or responses and highlights differences.
+
+Useful for:
+
+* Cookies
+* Tokens
+* HTTP Responses
+* Authentication Data
+
+---
+
+## Sequencer
+
+Tests randomness of generated values.
+
+Examples:
+
+* Session IDs
+* CSRF Tokens
+* Password Reset Tokens
+* API Tokens
+
+---
+
+# Burp Extensions
+
+Burp supports extensions through the BApp Store.
+
+Popular Extensions:
+
+* Logger++
+* JWT Editor
+* Hackvertor
+* Autorize
+* Active Scan++
+* Retire.js
+
+---
+
+# Typical Burp Workflow
+
+```
+Browser
+      │
+      ▼
+Proxy
+      │
+      ▼
+Intercept Request
+      │
+      ▼
+Send to Repeater
+      │
+      ▼
+Modify Request
+      │
+      ▼
+Send Again
+      │
+      ▼
+Analyze Response
+      │
+      ▼
+Use Intruder (Automation)
+      │
+      ▼
+Decoder / Comparer if needed
+```
+
+---
+
+# Key Takeaways
+
+### SQL
+
+✔ Relational databases use tables.
+
+✔ CRUD operations manipulate data.
+
+✔ Clauses filter and organize results.
+
+✔ Operators compare values.
+
+✔ Functions process and aggregate data.
+
+---
+
+### Burp Suite
+
+✔ Burp acts as a proxy.
+
+✔ Proxy intercepts requests.
+
+✔ Repeater manually tests requests.
+
+✔ Intruder automates attacks.
+
+✔ Decoder transforms data.
+
+✔ Comparer highlights differences.
+
+✔ Sequencer evaluates token randomness.
+
+These concepts form the foundation for web application security testing and are essential before learning vulnerabilities such as SQL Injection, XSS, Authentication Bypass, and API Security.
 
 
 
