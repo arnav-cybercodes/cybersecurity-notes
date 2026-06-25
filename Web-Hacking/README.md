@@ -603,19 +603,16 @@ password=123
 
 ✔ Body mainly used in POST, PUT & PATCH
 ````
-
----
-
-````markdown
+````
 # 06. HTTP Responses
 
 ## What is an HTTP Response?
 
-An HTTP Response is sent by the **server** back to the **client** after processing a request.
+An HTTP Response is sent by the **server** to the **client (browser)** after processing an HTTP request.
 
 ---
 
-## Structure
+## Structure of an HTTP Response
 
 ```
 Status Line
@@ -632,7 +629,6 @@ Body
 ## Status Line
 
 Contains:
-
 - HTTP Version
 - Status Code
 - Status Message
@@ -647,33 +643,61 @@ HTTP/1.1 200 OK
 
 ## Response Headers
 
-Common Headers:
+Common response headers:
 
-Content-Type
+### Content-Type
+
+Specifies the type of content returned.
+
+Example:
 
 ```
 Content-Type: text/html
 ```
 
-Server
+---
+
+### Server
+
+Specifies the web server software.
+
+Example:
 
 ```
 Server: nginx
 ```
 
-Set-Cookie
+---
+
+### Set-Cookie
+
+Creates a cookie in the browser.
+
+Example:
 
 ```
 Set-Cookie: session=abc123
 ```
 
-Content-Length
+---
+
+### Content-Length
+
+Specifies the response size.
+
+Example:
 
 ```
 Content-Length: 250
 ```
 
-Location
+---
+
+### Location
+
+Redirects the client to another page.
+
+Example:
 
 ```
 Location: /login
@@ -683,29 +707,20 @@ Location: /login
 
 ## Response Body
 
-Contains:
+Contains the actual data returned by the server.
 
+Examples:
 - HTML
 - CSS
 - JavaScript
 - JSON
 - Images
 
-Example:
-
-```html
-<h1>Hello World</h1>
-```
-
 ---
 
-## Common Status Codes
+## HTTP Status Codes
 
-### 1xx
-
-Informational
-
-Example:
+### 1xx – Informational
 
 ```
 100 Continue
@@ -713,9 +728,7 @@ Example:
 
 ---
 
-### 2xx
-
-Success
+### 2xx – Success
 
 ```
 200 OK
@@ -725,9 +738,7 @@ Success
 
 ---
 
-### 3xx
-
-Redirection
+### 3xx – Redirection
 
 ```
 301 Moved Permanently
@@ -737,9 +748,7 @@ Redirection
 
 ---
 
-### 4xx
-
-Client Errors
+### 4xx – Client Errors
 
 ```
 400 Bad Request
@@ -751,9 +760,7 @@ Client Errors
 
 ---
 
-### 5xx
-
-Server Errors
+### 5xx – Server Errors
 
 ```
 500 Internal Server Error
@@ -766,27 +773,26 @@ Server Errors
 
 ## Quick Revision
 
-2xx → Success
+✔ 2xx → Success
 
-3xx → Redirect
+✔ 3xx → Redirect
 
-4xx → Client Error
+✔ 4xx → Client Error
 
-5xx → Server Error
+✔ 5xx → Server Error
 ````
-
----
-
-````markdown
+````
 # 07. HTTP Security Headers
 
-Security headers improve web application security.
+## What are Security Headers?
+
+Security headers are HTTP response headers that improve the security of a web application.
 
 ---
 
 ## Strict-Transport-Security (HSTS)
 
-Forces HTTPS connections.
+Forces browsers to use HTTPS.
 
 Example:
 
@@ -794,19 +800,24 @@ Example:
 Strict-Transport-Security
 ```
 
+Protects against:
+- Protocol Downgrade
+- SSL Stripping
+
 ---
 
 ## Content-Security-Policy (CSP)
 
-Restricts what content the browser can load.
+Controls which resources the browser can load.
 
-Helps prevent:
-
+Protects against:
 - Cross-Site Scripting (XSS)
 
 ---
 
 ## X-Content-Type-Options
+
+Value:
 
 ```
 nosniff
@@ -818,15 +829,15 @@ Prevents MIME-type sniffing.
 
 ## X-Frame-Options
 
-Protects against:
-
-- Clickjacking
+Prevents Clickjacking attacks.
 
 Values:
 
 ```
 DENY
+```
 
+```
 SAMEORIGIN
 ```
 
@@ -834,25 +845,26 @@ SAMEORIGIN
 
 ## Referrer-Policy
 
-Controls how much referrer information is shared.
+Controls how much referrer information is shared with other websites.
 
 ---
 
 ## Permissions-Policy
 
-Controls browser features such as:
+Controls browser permissions like:
 
 - Camera
 - Microphone
 - Geolocation
+- Fullscreen
 
 ---
 
-## Why Security Headers Matter
+## Why are Security Headers Important?
 
-They help defend against:
+They help protect web applications from:
 
-- XSS
+- Cross-Site Scripting (XSS)
 - Clickjacking
 - MIME Sniffing
 - Information Leakage
@@ -861,26 +873,26 @@ They help defend against:
 
 ## Quick Revision
 
-HSTS → HTTPS Only
+✔ HSTS → Force HTTPS
 
-CSP → Prevent XSS
+✔ CSP → Prevent XSS
 
-X-Frame-Options → Prevent Clickjacking
+✔ X-Frame-Options → Prevent Clickjacking
 
-X-Content-Type-Options → Prevent MIME Sniffing
+✔ X-Content-Type-Options → Prevent MIME Sniffing
+
+✔ Referrer-Policy → Control Referrer Information
+
+✔ Permissions-Policy → Control Browser Features
 ````
-
----
-
-````markdown
+````
 # 08. Cookies & Sessions
 
 ## Cookies
 
 Cookies are small pieces of data stored in the user's browser.
 
-Uses:
-
+Common Uses:
 - Authentication
 - User Preferences
 - Tracking
@@ -894,7 +906,7 @@ session=abc123
 
 ---
 
-## Session
+## Sessions
 
 A session stores user information on the server.
 
@@ -902,79 +914,84 @@ Flow:
 
 ```
 User Logs In
-
-↓
-
+      ↓
 Server Creates Session
-
-↓
-
+      ↓
 Session ID Sent as Cookie
-
-↓
-
-Browser Sends Cookie in Every Request
-
-↓
-
-Server Identifies User
+      ↓
+Browser Sends Cookie with Every Request
+      ↓
+Server Identifies the User
 ```
 
 ---
 
-## Difference
+## Cookies vs Sessions
 
 | Cookies | Sessions |
 |----------|----------|
 | Stored in Browser | Stored on Server |
-| Small Data | Larger Data |
-| Can be Modified by User | Managed by Server |
+| Small Amount of Data | Larger Data |
+| Can Be Modified by User | Managed by Server |
 
 ---
 
 ## Cookie Attributes
 
-HttpOnly
+### HttpOnly
 
-- JavaScript cannot access the cookie.
-
-Secure
-
-- Sent only over HTTPS.
-
-SameSite
-
-- Helps prevent CSRF attacks.
+Prevents JavaScript from accessing the cookie.
 
 ---
 
-## Cybersecurity Importance
+### Secure
 
-Attackers may target cookies through:
+Cookie is sent only over HTTPS.
+
+---
+
+### SameSite
+
+Helps prevent Cross-Site Request Forgery (CSRF).
+
+---
+
+## Security Risks
+
+Attackers may target cookies using:
 
 - Session Hijacking
 - Cookie Theft
-- XSS
-- CSRF
+- Cross-Site Scripting (XSS)
+- Cross-Site Request Forgery (CSRF)
 
-Protect cookies using:
+---
 
-- HttpOnly
-- Secure
-- SameSite
+## Best Practices
+
+- Use HttpOnly
+- Use Secure
+- Use SameSite
+- Use HTTPS
+- Avoid storing sensitive information in cookies
 
 ---
 
 ## Quick Revision
 
-✔ Cookies → Browser
+✔ Cookies → Stored in Browser
 
-✔ Sessions → Server
+✔ Sessions → Stored on Server
 
-✔ HttpOnly → Prevent JS Access
+✔ HttpOnly → Blocks JavaScript Access
 
 ✔ Secure → HTTPS Only
 
-✔ SameSite → CSRF Protection
+✔ SameSite → Helps Prevent CSRF
 ````
+
+
+
+
+
 
