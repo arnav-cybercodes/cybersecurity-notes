@@ -1628,169 +1628,248 @@ Features:
 * Dashboard
 * Scheduled scans
 * Centralized vulnerability management
-
+* 
 ---
 
-# Core Burp Suite Tools
+# Features of Burp Community Edition
 
 ## Proxy
 
-* Intercepts HTTP/HTTPS traffic
-* Modify requests
-* Modify responses
-* Forward or drop requests
-
-Most frequently used Burp feature.
-
----
+* Intercepts HTTP/HTTPS requests and responses.
+* Allows modifying requests before sending them.
+* Core feature used in web application testing.
 
 ## Repeater
 
-Used to resend the same request repeatedly after modifying parameters.
-
-Useful for:
-
-* SQL Injection
-* XSS
-* Authentication Testing
-* API Testing
-
----
+* Sends the same request multiple times.
+* Useful for manually testing parameters and vulnerabilities.
 
 ## Intruder
 
-Automates requests using payload lists.
-
-Used for:
-
-* Brute Force
-* Fuzzing
-* Parameter Discovery
-
----
+* Automates sending multiple payloads.
+* Used for fuzzing and brute-force attacks.
+* Community Edition has limited speed.
 
 ## Decoder
 
-Encodes and decodes data.
-
-Supports:
-
-* Base64
-* URL Encoding
-* HTML
-* Hex
-* Binary
-
----
+* Encodes and decodes data.
+* Supports URL, Base64, Hex and other formats.
 
 ## Comparer
 
-Compares two requests or responses and highlights differences.
-
-Useful for:
-
-* Cookies
-* Tokens
-* HTTP Responses
-* Authentication Data
-
----
+* Compares two requests or responses.
+* Highlights differences between them.
 
 ## Sequencer
 
-Tests randomness of generated values.
+* Analyzes randomness of session tokens and cookies.
+
+## Extensions
+
+* Burp supports extensions written in Java, Python (Jython), and Ruby.
+* Additional extensions can be installed from the BApp Store.
+
+---
+
+# Burp Dashboard
+
+The dashboard is divided into four sections:
+
+### 1. Tasks
+
+Displays background tasks such as passive crawling.
+
+### 2. Event Log
+
+Shows Burp events, warnings and errors.
+
+### 3. Issue Activity
+
+Shows vulnerabilities detected by automated scanning (Professional Edition).
+
+### 4. Advisory
+
+Displays detailed information about identified issues.
+
+---
+
+# Navigation
+
+Burp is divided into modules:
+
+* Dashboard
+* Target
+* Proxy
+* Intruder
+* Repeater
+* Collaborator
+* Sequencer
+* Decoder
+* Comparer
+* Logger
+* Organizer
+* Extensions
+
+Each module contains its own sub-tabs.
+
+Useful shortcuts:
+
+* Ctrl + Shift + D → Dashboard
+* Ctrl + Shift + T → Target
+* Ctrl + Shift + P → Proxy
+* Ctrl + Shift + I → Intruder
+* Ctrl + Shift + R → Repeater
+
+---
+
+# Settings
+
+Burp has two types of settings.
+
+## Global Settings
+
+* Applied every time Burp starts.
+* Affect the entire Burp installation.
+
+## Project Settings
+
+* Apply only to the current project.
+* Not saved permanently in Community Edition.
+
+Settings can be searched using the search bar.
+
+---
+
+# Burp Proxy
+
+The Proxy sits between the browser and the target website.
+
+Browser
+↓
+Burp Proxy
+↓
+Web Server
+
+Functions:
+
+* Intercept requests
+* Forward requests
+* Drop requests
+* Modify requests
+* Capture HTTP history
+* Capture WebSocket traffic
+
+Even with Intercept OFF, Burp still records traffic in HTTP History.
+
+---
+
+# HTTP History
+
+Stores every captured request and response.
+
+Useful for:
+
+* Reviewing previous requests
+* Finding hidden endpoints
+* Sending requests to Repeater or Intruder
+
+---
+
+# Match and Replace
+
+Automatically modifies requests or responses using predefined rules.
+
+Useful for:
+
+* Replacing headers
+* Replacing cookies
+* Modifying request values automatically
+
+---
+
+# Site Map
+
+Target → Site Map
+
+Displays every discovered page and endpoint.
+
+Useful for:
+
+* Mapping web applications
+* Finding hidden pages
+* Discovering APIs
+* Finding unusual endpoints
+
+Example:
+
+/about/
+/contact/
+/products/
+/admin/
+/randomHiddenPage
+
+---
+
+# Scope
+
+Scope tells Burp which websites belong to the assessment.
+
+Advantages:
+
+* Filters unrelated websites
+* Reduces unnecessary traffic
+* Makes testing easier
+
+Add Scope:
+
+Target
+→ Right Click Host
+→ Add To Scope
+
+---
+
+# Proxy Interception Rules
+
+Rules determine which requests Burp should intercept.
 
 Examples:
 
-* Session IDs
-* CSRF Tokens
-* Password Reset Tokens
-* API Tokens
+* Ignore images
+* Ignore CSS
+* Ignore JavaScript
+* Ignore requests outside target scope
+
+This keeps interception clean and focused.
 
 ---
 
-# Burp Extensions
+# Burp Browser
 
-Burp supports extensions through the BApp Store.
+Burp includes its own Chromium browser.
 
-Popular Extensions:
+Advantages:
 
-* Logger++
-* JWT Editor
-* Hackvertor
-* Autorize
-* Active Scan++
-* Retire.js
+* Already configured with Burp Proxy
+* No FoxyProxy setup required
+* Automatically captures all traffic
 
----
+Can be opened from:
 
-# Typical Burp Workflow
-
-```
-Browser
-      │
-      ▼
 Proxy
-      │
-      ▼
-Intercept Request
-      │
-      ▼
-Send to Repeater
-      │
-      ▼
-Modify Request
-      │
-      ▼
-Send Again
-      │
-      ▼
-Analyze Response
-      │
-      ▼
-Use Intruder (Automation)
-      │
-      ▼
-Decoder / Comparer if needed
-```
+→ Open Browser
 
 ---
 
-# Key Takeaways
+# Practical Lab
 
-### SQL
+While exploring the Site Map, Burp can reveal endpoints that are not easily visible while browsing manually.
 
-✔ Relational databases use tables.
+Example:
 
-✔ CRUD operations manipulate data.
+/5yjR2GLcoGoij2ZK
 
-✔ Clauses filter and organize results.
-
-✔ Operators compare values.
-
-✔ Functions process and aggregate data.
+This hidden endpoint contained the room flag, demonstrating how Site Map helps discover hidden resources during web application testing.
 
 ---
-
-### Burp Suite
-
-✔ Burp acts as a proxy.
-
-✔ Proxy intercepts requests.
-
-✔ Repeater manually tests requests.
-
-✔ Intruder automates attacks.
-
-✔ Decoder transforms data.
-
-✔ Comparer highlights differences.
-
-✔ Sequencer evaluates token randomness.
-
-These concepts form the foundation for web application security testing and are essential before learning vulnerabilities such as SQL Injection, XSS, Authentication Bypass, and API Security.
-
-
-
 
 
