@@ -14,8 +14,8 @@ Mechanical Engineering student transitioning into Cybersecurity.
 - [x] Linux
 - [x] Networking
 - [x] Windows Fundamentals
-- [ ] Command Line
-- [ ] Cryptography
+- [x] Command Line
+- [x] Cryptography
 
 ## Notes
 - Linux
@@ -25,4 +25,4 @@ Mechanical Engineering student transitioning into Cybersecurity.
 - Cryptography
 
 ## TryHackMe
-Top 25% Global Ranking
+Top 8% Global Ranking
