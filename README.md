@@ -25,4 +25,4 @@ Mechanical Engineering student transitioning into Cybersecurity.
 - Cryptography
 
 ## TryHackMe
-Top 8% Global Ranking
+Top 1% Global Ranking
